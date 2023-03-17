@@ -5,7 +5,6 @@
 /*
     string
     number
-    float
     boolean
     array
     object
@@ -13,7 +12,7 @@
     undefined
 */
 
-// ✅ Show each of the data types
+// ✅ Show each of the data types, also use typeof()
 
 
 
