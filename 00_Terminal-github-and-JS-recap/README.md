@@ -80,6 +80,8 @@ Git is one of the most useful things we'll use in our time as developers. It giv
 
 Here are some of the more common git commands we'll be using for the rest of our developer lives:
 
+> `git -h` or `git --help` - shows a list of git commands. Super handy if you can't remember what they are, and it also tells you what they do!
+
 > `git clone` - takes an argument of the repo URL to download a local copy of the codebase to your computer. ( i.e. `git clone https://github.com/PrincetonJRose/Day-1-Terminal-github-and-other-useful-tools` ) Will clone into the current directory by default and make a folder with the name of the repo. Can take a second argument to change the name of the folder it stores the files in! ( i.e. `git clone https://github.com/PrincetonJRose/Day-1-Terminal-github-and-other-useful-tools NewFolderName` )
 
 > `git status` - shows what files have been changed since the last repo update and/or pull, and what files are not being tracked ( a.k.a have not been commited yet )
