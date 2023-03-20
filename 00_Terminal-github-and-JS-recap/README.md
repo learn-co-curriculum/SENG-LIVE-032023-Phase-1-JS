@@ -84,7 +84,7 @@ Here are some of the more common git commands we'll be using for the rest of our
 
 > `git clone` - takes an argument of the repo URL to download a local copy of the codebase to your computer. ( i.e. `git clone https://github.com/PrincetonJRose/Day-1-Terminal-github-and-other-useful-tools` ) Will clone into the current directory by default and make a folder with the name of the repo. Can take a second argument to change the name of the folder it stores the files in! ( i.e. `git clone https://github.com/PrincetonJRose/Day-1-Terminal-github-and-other-useful-tools NewFolderName` )
 
-> `git status` - shows what files have been changed since the last repo update and/or pull, and what files are not being tracked ( a.k.a have not been commited yet )
+> `git status` - shows what files have been changed since the last repo update and/or pull, and what files are or are not being tracked ( a.k.a have not been committed yet )
 
 > `git add` - allows you to add files to be tracked, which means that in the next push those files will be uploaded to the repo on the github website. Takes an argument for what files to add to the tracking. Use `git add .` to add the entire repo, or use `git add fileName` / `git add folderName` to add specific files and/or folders. You can do multiple git adds before a commit!
 
