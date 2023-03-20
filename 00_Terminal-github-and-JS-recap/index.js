@@ -12,7 +12,7 @@
     undefined
 */
 
-// ✅ Show each of the data types, also use typeof()
+// ✅ Show each of the data types and use typeof()
 
 
 
