@@ -94,12 +94,11 @@
 
 
 
+// ❓ When do I use forEach vs map? 🤔
+
+
 // ✅ Iterate through the array and filter only the numbers greater than 10
 
-
-
-
-// ❓ When do I use forEach vs map? 🤔
 
 
 // 💡 Working with Objects
