@@ -60,9 +60,9 @@ Here are some of the extensions I use:
 
 In every web browser there are a set of tools to help web developers with creating their websites and apps. You may have even seen them before by total accident! They are something we're going to live by as we work our way through this course. So get comfortable using them!!! 👍
 
-There are two super common ways of opening the dev tools in your web browser:
+There are two most common ways of opening the dev tools in your web browser:
 
-1. `F12` or `Fn + F12` - the fast keyboard shortcut
+1. `F12` or `Fn + F12` - the keyboard shortcut
 2. `Right-click` on any webpage with your mouse ( or two finger click with a track-pad ), and in the new context menu that's popped up click `Inspect` all the way at the bottom.
 
 You'll notice there is a lot going on here, but these tools really let us see behind the curtain of what's going on with **any** website we visit! Just know that the two most common things we'll look at most will be the `Elements` pane and the `Console` pane. But otherwise, feel free to take some time to explore around a bit and see what you can find! 🕵️
