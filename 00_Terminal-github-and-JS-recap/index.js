@@ -38,7 +38,8 @@
 
 // ✅ Create a variable with const and try to change the value
 
-    someCoolConst = 1234
+    const tryToChangeConst = "I am Immutable!!!"
+    // tryToChangeConst = "I'm totally mutable..."
 
     // ❓ What happened? What did you get back and what did it say? 🤔
 
@@ -92,25 +93,40 @@
 
 // ✅ Iterate through the array and add two to each number with map
 
-
+    let numbersPlusTwo = numbers.map( number => number + 2 )
 
 // ❓ When do I use forEach vs map? 🤔
 
 
 // ✅ Iterate through the array and filter only the numbers greater than 10
-
+    
+    let higherNumbers = [1,2,7,832108, 10,  15, -30]
+    let filteredNumbers = higherNumbers.filter( number => number > 10 )
 
 
 // 💡 Working with Objects
 
 // ✅ Create a person object with the keys 'name' and 'role' and assign them values
 
+    let person = { 
+        name: 'TheCat',
+        from: 'Area 51',
+        role: 'Hero'
+    }
 
 
 // ✅ Access the key/value pairs of the object using both dot notation and bracket notation
 
+    person.name
+    person['name']
+
+    let key = 'name'
+
+    person[ key ]
 
 
-// ✅ Change the values of 'name' and 'role'
+// ✅ Change the values of the keys in the object
 
+    person['name'] = 'Puss in Boots'
+    person.from = 'Far Far Away'
 

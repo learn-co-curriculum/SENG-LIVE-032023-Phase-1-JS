@@ -73,32 +73,43 @@ const inventory = [
 */
 
 // Start here!
+function sayHello () {
+  return 'Hello everyone!'
+}
 
-
-
+function showPrice ( book ) {
+  return "$" + book.price
+}
 
 // 💡 Arrow functions vs regular functions
 
-// ✅ create an arrow function version of the formatPrice function
-
+// ✅ create an arrow function version of the showPrice function
+  let formatPrice = ( book ) => "$" + book.price
 
 
 // ✅ create a blurb() function that accepts a book as an argument and logs a message in the following format:
 // 'Eloquent JavaScript: A Modern Introduction to Programming by Marjin Haverbeke is on sale for $10.00'
 
-
+// function blurb ( book ) {
+//   return book.title + ' by ' + book.author + ' is on sale for $' + book.price 
+// }
+  let blurb = ( book ) => `${book.title} by ${book.author} is on sale for ${ formatPrice( book ) }`
 
 // 💡 Difference between Block scope, Function scope, and Global scope
 
 // ✅ create a variable `highestPricedBook`
 
+  let highestPricedBook
 
 
 // ✅ create a function `findHighestPricedBook` that finds that book and returns it
+  function findHighestPricedBook ( books ) {
+    let sortedInventory = [...books].sort( ( book1, book2 ) => book2.price - book1.price )
+    return sortedInventory[0]
+  }
 
+  highestPricedBook = findHighestPricedBook( inventory )
 
-
-// After Break
 
 // ✅ Create a function called `log` that takes a function and its argument as arguments
 // and logs a message explaining the name of the function, the argument passed and 
@@ -106,11 +117,9 @@ const inventory = [
 
 // 💡 Practice using callbacks for iteration
 
-
-
 // ✅ Create an array of the prices of all of the books
 
-
+  let bookPrices = inventory.map( book => book.price )
 
 // ✅ Create an array of simplified book objects
 
@@ -119,5 +128,4 @@ const inventory = [
 // ✅ Create an array of strings from the inventory in the following format:
 // 'Eloquent JavaScript: A Modern Introduction to Programming by Marjin Haverbeke is on sale for $10.00'
 
-
-// 💡 When do I use forEach vs map?
+  let booksStrings = inventory.map( book => blurb( book ) )
