@@ -9,7 +9,7 @@ function formatPrice(price) {
 
 
 const storeName = document.getElementById('store-name')
-storeName.textContent = 'Princeton & Thomas 🐺 Book Store'
+storeName.textContent = 'Princeton 🌹 & Thomas 🐺 Book Store'
 storeName.style.color = '#880808'
 store.style.fontFamily = 'monospace'
 
@@ -70,6 +70,8 @@ function renderBook( book ) {
 
 }
 
+// Let's get all the books rendered on the page with a loop!
+
 bookStore.inventory.forEach( book => renderBook( book ) )
 
 // Different way to iterate over the array and render all the books!!!
@@ -81,3 +83,6 @@ bookStore.inventory.forEach( book => renderBook( book ) )
   // })
 
   //  bookStore.inventory.map( renderBook )
+
+  // for ( let n = 0; n < bookStore.inventory.length; n++ )
+  //   renderBook( bookStore.inventory[n] )

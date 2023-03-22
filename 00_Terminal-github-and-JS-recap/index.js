@@ -60,7 +60,6 @@
     }
 
 
-    
     // ✅ Create a conditional statement that shows the difference between truthy and falsy values
     
     // debugger
