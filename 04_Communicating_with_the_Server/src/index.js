@@ -122,14 +122,37 @@ bookForm.addEventListener('submit', (e) => {
 })
 
 
+// [ ] Describe the request-response cycle
+// [ ] Explain the differences between a server and a client
+// [ ] Name the different HTTP Verbs and describe their actions
+// [ ] Observe how to send a GET request using .fetch()
+// [ ] Explain what asynchronous means in JavaScript
+// [ ] Explain why promises are important in JavaScript
+// [ ] Observe how to handle promises and errors using .then() and .catch()
+// [ ] Observe how json-server is used to create a local API
+// [ ] Observe how to render data to the browser window after a fetch request
+
 
 ////////////////////////////////////////////
 // call render functions to populate the DOM
 ////////////////////////////////////////////
 
-renderHeader(bookStore)
-renderFooter(bookStore)
-bookStore.inventory.forEach(renderBook)
+// renderHeader(bookStore)
+// renderFooter(bookStore)
+// bookStore.inventory.forEach(renderBook)
+const baseUrl = `http://localhost:3000/`
+const booksUrl = baseUrl + 'books/'
+const storesUrl = baseUrl + 'stores/'
+
+function fetchBooks () {
+  fetch( booksUrl )
+  .then( response => response.json() )
+  .then( booksData => renderBooks( booksData ) )
+}
 
 
+function renderBooks( books ) {
+  books.forEach( renderBook )
+}
 
+fetchBooks()
