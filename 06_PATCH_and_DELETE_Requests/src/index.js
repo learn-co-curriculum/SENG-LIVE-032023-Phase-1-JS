@@ -1,3 +1,4 @@
+const baseUrl = "http://localhost:3000"
 const bookList = document.querySelector('#book-list');
 const bookForm = document.querySelector('#book-form');
 const storeForm = document.querySelector('#store-form');
@@ -97,22 +98,48 @@ function renderBook(book) {
   pPrice.textContent = formatPrice(book.price);
   li.append(pPrice);
 
+  const inventoryLabel = document.createElement('label')
+  inventoryLabel.textContent = "Inventory: " + book.inventory
+
   const inventoryInput = document.createElement('input');
   inventoryInput.type = 'number';
   inventoryInput.className = 'inventory-input';
   inventoryInput.value = book.inventory;
   inventoryInput.min = 0;
-  li.append(inventoryInput);
+  inventoryInput.style = "color:white"
   
-  const pStock = document.createElement('p');
-  pStock.className = "grey";
-  if (book.inventory === 0) {
-    pStock.textContent = "Out of stock";
-  } else if (book.inventory < 3) {
-    pStock.textContent = "Only a few left!";
-  } else {
-    pStock.textContent = "In stock"
-  }
+  const pStock = document.createElement('p')
+
+  inventoryInput.addEventListener('input', () => {
+    fetch(baseUrl + `/books/${book.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({inventory: inventoryInput.value})
+  })
+    .then(res => res.json())
+    .then(book => {
+      // now that the book has been updated in the server
+      // do we do anything with it?
+      inventoryLabel.textContent = `Inventory: ${book.inventory}`
+
+      //We want to update the text, that hints at how many are left.
+      console.log(book.inventory)
+      updateStock(pStock, book.inventory)
+      
+    })
+  })
+  
+  
+
+  li.append(inventoryLabel)
+  
+  li.append(inventoryInput)
+  
+  
+  pStock.className = "grey"
+  updateStock(pStock, book.inventory)
   li.append(pStock);
   
   const img = document.createElement('img');
@@ -123,13 +150,37 @@ function renderBook(book) {
   const btn = document.createElement('button');
   btn.textContent = 'Delete';
 
-  btn.addEventListener('click', (e) => {
-    li.remove();
+  //add delete to event listener for Delete button
+  btn.addEventListener('click', (e) => 
+  {
+    // Creating the Fetch request to delete the book
+    fetch(baseUrl + `/books/${book.id}`, {
+      method: "DELETE"
+    })
+    //after the request is made, let's take the response, and check if its okay
+    .then(res => {
+      if (res.ok) {
+        //delete our book
+        li.remove();
+      }
+    })
+    .then();  
   })
+
   li.append(btn);
 
   bookList.append(li);
   return li;
+}
+
+function updateStock(textField, bookInventory) {
+  if (bookInventory <= 0) {
+    textField.textContent = "Out of stock"
+  } else if (bookInventory < 3) {
+    textField.textContent = "Only a few left!"
+  } else {
+    textField.textContent = "In stock"
+  }
 }
 
 function renderError(error) {
@@ -212,9 +263,24 @@ storeForm.addEventListener('submit', (e) => {
   
   if (storeEditMode) {
     // ✅ write code for updating the store here
-    
+    let storeId = document.querySelector('#store-selector').value;
+
+    //Patch!
+    fetch(baseUrl + `/stores/${storeId}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(store)
+    })
+    .then(res => res.json())
+    .then(store => {
+      //what to do with new store
+      renderFooter(store)
+    })
+
   } else {
-    postJSON("http://localhost:3000/stores", store)
+    postJSON(baseUrl + "/stores", store)
     .then(addSelectOptionForStore)
     .catch(renderError);
   }
