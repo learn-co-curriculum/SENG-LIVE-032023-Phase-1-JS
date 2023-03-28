@@ -23,6 +23,22 @@
       "number": 5554443333,
       "name": "Tech BooksRus",
       "hours": "Thursday - Saturday 11am - 7pm"
+    },
+    {
+      "name": "BooksRUs",
+      "location": "LaLaLand",
+      "number": "555-555-5555",
+      "address": "555 Shangri-La",
+      "hours": "Monday - Friday 9am - 6pm",
+      "id": 4
+    },
+    {
+      "name": "BooksRUs",
+      "location": "LaLaLand",
+      "number": "555-555-5555",
+      "address": "555 Shangri-La",
+      "hours": "Monday - Friday 9am - 6pm",
+      "id": 5
     }
   ],
   "books": [
@@ -135,6 +151,51 @@
       ],
       "inventory": 20,
       "imageUrl": "https://images-na.ssl-images-amazon.com/images/I/41oYsXjLvZL._SY344_BO1,204,203,200_.jpg"
+    },
+    {
+      "title": "hannibal",
+      "author": "thomas harris",
+      "price": 14,
+      "reviews": [],
+      "inventory": 4,
+      "imageUrl": "https://static.wikia.nocookie.net/hannibal/images/f/f6/HBL_Complete_Series_Poster.jpg/revision/latest?cb=20200625050724",
+      "id": 8
+    },
+    {
+      "title": "Silence of The Lambs",
+      "author": "Thomas Harris",
+      "price": 4,
+      "reviews": [],
+      "inventory": 6,
+      "imageUrl": "https://m.media-amazon.com/images/M/MV5BNjNhZTk0ZmEtNjJhMi00YzFlLWE1MmEtYzM1M2ZmMGMwMTU4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+      "id": 9
+    },
+    {
+      "title": "a",
+      "author": "a",
+      "price": 1,
+      "reviews": [],
+      "inventory": null,
+      "imageUrl": "a",
+      "id": 10
+    },
+    {
+      "title": "mytitle",
+      "author": "myauthor",
+      "price": 32,
+      "reviews": [],
+      "inventory": 2,
+      "imageUrl": "1",
+      "id": 11
+    },
+    {
+      "title": "",
+      "author": "",
+      "price": null,
+      "reviews": [],
+      "inventory": 0,
+      "imageUrl": "",
+      "id": 12
     }
   ]
 }

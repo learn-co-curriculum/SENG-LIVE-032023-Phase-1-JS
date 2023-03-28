@@ -1,3 +1,4 @@
+const baseUrl = "http://localhost:3000"
 const bookList = document.querySelector('#book-list');
 const bookForm = document.querySelector('#book-form');
 const storeForm = document.querySelector('#store-form');
@@ -224,15 +225,80 @@ bookForm.addEventListener('submit', (e) => {
     inventory: Number(e.target.inventory.value),
     imageUrl: e.target.imageUrl.value
   }
-  // pass the info as an argument to renderBook for display!
-  renderBook(book);
-  // 1. Add the ability to perist the book to the database when the form is submitted. When this works, we should still see the book that is added to the DOM on submission when we refresh the page.
+
+  // 1. Add the ability to perist the book to the database when the form is 
+  //submitted. When this works, we should still see the book that is added 
+  //to the DOM on submission when we refresh the page.
+  let url = baseUrl + '/books'
+  
+  fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(book) // body data type must match "Content-Type" header
+  }).then(response => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw (response.statusText)
+    }
+  }).then((serverBook) => {
+    // pass the info as an argument to renderBook for display!
+    renderBook(serverBook);
+  });
 
   e.target.reset();
 })
 
 // 2. Hook up the new Store form so it that it works to add a new store to our database and also to the DOM (as an option within the select tag)
+storeForm.addEventListener('submit', (e) => { 
+  e.preventDefault();
+  // pull the info for the new book out of the form
+  const store = {
+    name: e.target.name.value,
+    location: e.target.location.value,
+    number: e.target.number.value,
+    address: e.target.address.value,
+    hours: e.target.hours.value
+  }
 
+  // 1. Add the ability to perist the book to the database when the form is 
+  //submitted. When this works, we should still see the book that is added 
+  //to the DOM on submission when we refresh the page.
+  let url = baseUrl + '/stores'
+  
+  fetch(url, {
+    method: 'POST', // *GET, POST, PUT, DELETE, etc.
+    mode: 'cors', // no-cors, *cors, same-origin
+    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+    credentials: 'same-origin', // include, *same-origin, omit
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    redirect: 'follow', // manual, *follow, error
+    referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    body: JSON.stringify(store) // body data type must match "Content-Type" header
+  }).then(response => {
+    if (response.ok) {
+      return response.json()
+    } else {
+      throw (response.statusText)
+    }
+  }).then((serverStore) => {
+    // pass the info as an argument to renderBook for display!
+    addSelectOptionForStore(serverStore)
+  });
+
+  e.target.reset();
+})
 // we're filling in the storeForm with some data
 // for a new store programatically so we don't 
 // have to fill in the form every time we test
