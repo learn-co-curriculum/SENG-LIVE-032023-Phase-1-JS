@@ -74,6 +74,8 @@ newRamenForm.onsubmit = ( event ) => {
     
     // The new ramen should be added to the#ramen-menu div.
     renderRamenImage( newRamen )
+
+    newRamenForm.reset()
 }
 
 
