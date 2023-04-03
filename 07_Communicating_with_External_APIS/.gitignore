@@ -1,0 +1,5 @@
+# files that are ignored will be grayed out in VS code's file explorer!
+
+/SuperSecret
+
+Keys.js
